@@ -194,6 +194,29 @@ Disabling a skill renames it to `SKILL.md.disabled` — the file stays in place 
 - **Terminal**: xterm.js + node-pty via WebSocket
 - **Language**: TypeScript 5
 
+## Agent Skill
+
+This repo also includes a standalone **manage-skills** skill that teaches AI agents how to discover, create, edit, copy, move, and delete skills across all 11 tools directly from the terminal — no web UI needed.
+
+### Install the skill
+
+```bash
+# For Cursor
+cp -r skills/manage-skills ~/.cursor/skills/manage-skills
+
+# For Claude
+cp -r skills/manage-skills ~/.claude/skills/manage-skills
+
+# For Agents
+cp -r skills/manage-skills ~/.agents/skills/manage-skills
+```
+
+Once installed, ask your agent things like:
+- "List all my skills across all tools"
+- "Create a new skill called code-review for Cursor"
+- "Copy my deploy skill from Agents to Claude"
+- "Disable the pr-review skill"
+
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
