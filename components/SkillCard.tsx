@@ -8,6 +8,14 @@ const toolColors: Record<string, string> = {
   cursor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
   claude: "bg-orange-500/10 text-orange-400 border-orange-500/20",
   agents: "bg-green-500/10 text-green-400 border-green-500/20",
+  windsurf: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+  codex: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  copilot: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+  cline: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+  aider: "bg-lime-500/10 text-lime-400 border-lime-500/20",
+  continue: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+  roo: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+  augment: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
   plugin: "bg-purple-500/10 text-purple-400 border-purple-500/20",
 };
 

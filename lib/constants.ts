@@ -3,12 +3,22 @@ import path from "path";
 
 const HOME = os.homedir();
 
+export type ToolType = "cursor" | "claude" | "agents" | "windsurf" | "codex" | "copilot" | "cline" | "aider" | "continue" | "roo" | "augment" | "plugin";
+
 export interface SkillSource {
   id: string;
   label: string;
   path: string;
   scope: "global" | "plugin";
-  tool: "cursor" | "claude" | "agents" | "plugin";
+  tool: ToolType;
+}
+
+// Single-file tools store config in one file rather than a skills directory
+export interface SingleFileSource {
+  id: string;
+  label: string;
+  filePath: string;
+  tool: ToolType;
 }
 
 export const GLOBAL_SKILL_SOURCES: SkillSource[] = [
@@ -40,6 +50,68 @@ export const GLOBAL_SKILL_SOURCES: SkillSource[] = [
     scope: "global",
     tool: "claude",
   },
+  {
+    id: "windsurf-global",
+    label: "Windsurf (Global)",
+    path: path.join(HOME, ".windsurf", "rules"),
+    scope: "global",
+    tool: "windsurf",
+  },
+  {
+    id: "cline-global",
+    label: "Cline (Global)",
+    path: path.join(HOME, ".cline", "rules"),
+    scope: "global",
+    tool: "cline",
+  },
+  {
+    id: "cline-global-alt",
+    label: "Cline (Global Alt)",
+    path: path.join(HOME, ".clinerules"),
+    scope: "global",
+    tool: "cline",
+  },
+  {
+    id: "continue-global",
+    label: "Continue (Global)",
+    path: path.join(HOME, ".continue", "rules"),
+    scope: "global",
+    tool: "continue",
+  },
+  {
+    id: "roo-global",
+    label: "Roo Code (Global)",
+    path: path.join(HOME, ".roo", "rules"),
+    scope: "global",
+    tool: "roo",
+  },
+];
+
+export const SINGLE_FILE_SOURCES: SingleFileSource[] = [
+  {
+    id: "copilot-global",
+    label: "Copilot (Global)",
+    filePath: path.join(HOME, ".github", "copilot-instructions.md"),
+    tool: "copilot",
+  },
+  {
+    id: "codex-global",
+    label: "Codex (Global)",
+    filePath: path.join(HOME, ".codex", "AGENTS.md"),
+    tool: "codex",
+  },
+  {
+    id: "aider-global",
+    label: "Aider (Global)",
+    filePath: path.join(HOME, ".aider.conf.yml"),
+    tool: "aider",
+  },
+  {
+    id: "augment-global",
+    label: "Augment (Global)",
+    filePath: path.join(HOME, "augment-guidelines.md"),
+    tool: "augment",
+  },
 ];
 
 export const PLUGIN_SKILL_BASE = path.join(HOME, ".cursor", "plugins", "cache");
@@ -48,9 +120,17 @@ export const INSTALL_TARGETS = [
   { id: "agents-global", label: "Agents Global", basePath: path.join(HOME, ".agents", "skills"), scope: "global" as const, tool: "agents" as const },
   { id: "cursor-global", label: "Cursor Global", basePath: path.join(HOME, ".cursor", "skills"), scope: "global" as const, tool: "cursor" as const },
   { id: "claude-global", label: "Claude Global", basePath: path.join(HOME, ".claude", "skills"), scope: "global" as const, tool: "claude" as const },
+  { id: "windsurf-global", label: "Windsurf Global", basePath: path.join(HOME, ".windsurf", "rules"), scope: "global" as const, tool: "windsurf" as const },
+  { id: "cline-global", label: "Cline Global", basePath: path.join(HOME, ".cline", "rules"), scope: "global" as const, tool: "cline" as const },
+  { id: "continue-global", label: "Continue Global", basePath: path.join(HOME, ".continue", "rules"), scope: "global" as const, tool: "continue" as const },
+  { id: "roo-global", label: "Roo Code Global", basePath: path.join(HOME, ".roo", "rules"), scope: "global" as const, tool: "roo" as const },
   { id: "agents-project", label: "Agents (Project)", basePath: ".agents/skills", scope: "project" as const, tool: "agents" as const },
   { id: "cursor-project", label: "Cursor (Project)", basePath: ".cursor/skills", scope: "project" as const, tool: "cursor" as const },
   { id: "claude-project", label: "Claude (Project)", basePath: ".claude/skills", scope: "project" as const, tool: "claude" as const },
+  { id: "windsurf-project", label: "Windsurf (Project)", basePath: ".windsurf/rules", scope: "project" as const, tool: "windsurf" as const },
+  { id: "cline-project", label: "Cline (Project)", basePath: ".cline/rules", scope: "project" as const, tool: "cline" as const },
+  { id: "continue-project", label: "Continue (Project)", basePath: ".continue/rules", scope: "project" as const, tool: "continue" as const },
+  { id: "roo-project", label: "Roo Code (Project)", basePath: ".roo/rules", scope: "project" as const, tool: "roo" as const },
 ];
 
 export const CATEGORY_MAP: Record<string, string> = {

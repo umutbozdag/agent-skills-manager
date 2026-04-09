@@ -6,7 +6,7 @@
 
 <p align="center">
   Manage all your AI agent skills from a single dashboard.<br/>
-  Supports <strong>Cursor</strong>, <strong>Claude</strong>, and <strong>Agents</strong> — global, project, and plugin scopes.
+  Supports <strong>Cursor</strong>, <strong>Claude</strong>, <strong>Windsurf</strong>, <strong>Copilot</strong>, <strong>Codex</strong>, <strong>Cline</strong>, <strong>Aider</strong>, <strong>Continue</strong>, <strong>Roo Code</strong>, <strong>Augment</strong>, and <strong>Agents</strong>.
 </p>
 
 <p align="center">
@@ -28,15 +28,14 @@
 
 ## What is this?
 
-AI coding agents (Cursor, Claude Code, Agents) use **skills** — markdown files with instructions that extend agent capabilities. These skills live scattered across multiple directories on your machine:
+AI coding agents use **skills** and **rules** — markdown files with instructions that extend agent capabilities. These files live scattered across multiple directories on your machine:
 
 ```
-~/.cursor/skills/
-~/.claude/skills/
-~/.agents/skills/
-~/.cursor/plugins/cache/…/skills/
-your-project/.cursor/skills/
-your-project/.claude/skills/
+~/.cursor/skills/          ~/.windsurf/rules/        ~/.roo/rules/
+~/.claude/skills/          ~/.cline/rules/           ~/.continue/rules/
+~/.agents/skills/          ~/.codex/AGENTS.md        ~/.github/copilot-instructions.md
+~/.cursor/plugins/cache/…/skills/                    ~/augment-guidelines.md
+your-project/.cursor/skills/    your-project/.windsurf/rules/    ...and more
 ```
 
 **Agent Skills Manager** gives you a single dashboard to discover, view, edit, enable/disable, install, copy, move, and delete skills across all these locations.
@@ -46,14 +45,15 @@ your-project/.claude/skills/
 - **Unified Dashboard** — See all your skills from every source in one place with search, filtering by category/source, and grid or table views
 - **Skill Editor** — Edit skills with a CodeMirror-powered editor featuring markdown preview, split view, and syntax highlighting
 - **Enable/Disable** — Toggle skills on and off without deleting them (renames between `SKILL.md` and `SKILL.md.disabled`)
-- **Multi-source Discovery** — Automatically scans global directories, Cursor plugin caches, and project-level skill folders
+- **11 Tools Supported** — Cursor, Claude, Agents, Windsurf, Copilot, Codex, Cline, Aider, Continue, Roo Code, and Augment
+- **Multi-source Discovery** — Automatically scans global directories, plugin caches, single-file configs, and project-level skill folders
 - **Install from Git** — Clone any Git repository and install discovered skills to your preferred target
 - **Manual Creation** — Create new skills with a step-by-step wizard
 - **Bulk Actions** — Select multiple skills to copy, move, delete, or toggle in batch
 - **Project Management** — Add projects manually or run a full system scan to discover projects with skill directories
 - **Smart Categorization** — Auto-categorizes skills into groups like SwiftUI, Cloudflare, App Store Connect, Design, Git/CI, and more
 - **Interactive Terminal** — Built-in terminal for CLI-based skill management
-- **Cross-tool Install** — Install skills to any target: Cursor, Claude, or Agents — at global or project scope
+- **Cross-tool Install** — Install skills to any supported tool at global or project scope
 
 ## Installation
 
@@ -161,16 +161,29 @@ will use when this skill is activated.
 
 Disabling a skill renames it to `SKILL.md.disabled` — the file stays in place but agents won't pick it up.
 
-## Supported Skill Sources
+## Supported Tools & Sources
 
-| Source | Path | Scope |
-|--------|------|-------|
-| Agents (Global) | `~/.agents/skills/` | Global |
-| Cursor (Global) | `~/.cursor/skills/` | Global |
-| Cursor Built-in | `~/.cursor/skills-cursor/` | Global |
-| Claude (Global) | `~/.claude/skills/` | Global |
-| Cursor Plugins | `~/.cursor/plugins/cache/…/skills/` | Plugin |
-| Project-level | `<project>/.agents/skills/`, `.cursor/skills/`, `.claude/skills/` | Project |
+### Directory-based (multiple skills per directory)
+
+| Tool | Global Path | Project Path |
+|------|------------|--------------|
+| **Agents** | `~/.agents/skills/` | `.agents/skills/` |
+| **Cursor** | `~/.cursor/skills/`, `~/.cursor/skills-cursor/` | `.cursor/skills/` |
+| **Claude** | `~/.claude/skills/` | `.claude/skills/` |
+| **Windsurf** | `~/.windsurf/rules/` | `.windsurf/rules/` |
+| **Cline** | `~/.cline/rules/`, `~/.clinerules/` | `.cline/rules/` |
+| **Continue** | `~/.continue/rules/` | `.continue/rules/` |
+| **Roo Code** | `~/.roo/rules/` | `.roo/rules/` |
+| **Cursor Plugins** | `~/.cursor/plugins/cache/…/skills/` | — |
+
+### Single-file (one config file per tool)
+
+| Tool | Global Path | Project Path |
+|------|------------|--------------|
+| **Copilot** | `~/.github/copilot-instructions.md` | `.github/copilot-instructions.md` |
+| **Codex** | `~/.codex/AGENTS.md` | `.codex/AGENTS.md` |
+| **Aider** | `~/.aider.conf.yml` | `.aider.conf.yml` |
+| **Augment** | `~/augment-guidelines.md` | `augment-guidelines.md` |
 
 ## Tech Stack
 

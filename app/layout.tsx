@@ -47,7 +47,7 @@ function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-border">
-        <p className="text-xs text-muted">Scans global, plugin, and project skill directories</p>
+        <p className="text-xs text-muted">Supports 11 AI coding tools</p>
       </div>
     </aside>
   );

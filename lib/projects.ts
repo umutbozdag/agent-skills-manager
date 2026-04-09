@@ -10,6 +10,11 @@ const SKILL_SUBDIRS = [
   { subdir: ".agents/skills", tool: "agents" as const },
   { subdir: ".cursor/skills", tool: "cursor" as const },
   { subdir: ".claude/skills", tool: "claude" as const },
+  { subdir: ".windsurf/rules", tool: "windsurf" as const },
+  { subdir: ".cline/rules", tool: "cline" as const },
+  { subdir: ".clinerules", tool: "cline" as const },
+  { subdir: ".continue/rules", tool: "continue" as const },
+  { subdir: ".roo/rules", tool: "roo" as const },
 ];
 
 export interface SavedProject {
@@ -254,7 +259,7 @@ export async function startDiscoveryScan(): Promise<void> {
   scanStatus = { running: false, found: unique.length, currentDir: "", startedAt: 0 };
 }
 
-export function getProjectSkillDirs(projectPath: string): { path: string; tool: "agents" | "cursor" | "claude" }[] {
+export function getProjectSkillDirs(projectPath: string): { path: string; tool: "agents" | "cursor" | "claude" | "windsurf" | "cline" | "continue" | "roo" }[] {
   return SKILL_SUBDIRS.map(({ subdir, tool }) => ({
     path: path.join(projectPath, subdir),
     tool,

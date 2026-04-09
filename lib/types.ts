@@ -14,7 +14,7 @@ export interface Skill {
   sourceId: string;
   sourceLabel: string;
   scope: "global" | "plugin" | "project";
-  tool: "cursor" | "claude" | "agents" | "plugin";
+  tool: "cursor" | "claude" | "agents" | "windsurf" | "codex" | "copilot" | "cline" | "aider" | "continue" | "roo" | "augment" | "plugin";
   enabled: boolean;
   fileSize: number;
   modifiedAt: string;
